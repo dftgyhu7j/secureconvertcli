@@ -1,2 +1,17 @@
-const deepFlatten = (arr) =>
-  [].concat(...arr.map((v) => (Array.isArray(v) ? deepFlatten(v) : v)));
+function permute(nums) {
+  const result = [];
+  backtrack([]);
+  return result;
+  function backtrack(current) {
+    if (current.length === nums.length) {
+      result.push([...current]);
+      return;
+    }
+    for (const num of nums) {
+      if (current.includes(num)) continue;
+      current.push(num);
+      backtrack(current);
+      current.pop();
+    }
+  }
+}
